@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MerchantsServe {
+public class MerchantsService {
 
     @Resource
     MerchantsDao merchantsDao;

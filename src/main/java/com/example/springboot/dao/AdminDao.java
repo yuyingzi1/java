@@ -11,4 +11,6 @@ public interface AdminDao {
     List<Admin> getAll();
 
     Admin findByName(@Param("userName") String userName);
+
+    Admin findById(@Param("id") Integer id);
 }

@@ -3,6 +3,7 @@ package com.example.springboot.service;
 import cn.hutool.core.util.ObjectUtil;
 import com.example.springboot.common.ResultCode;
 import com.example.springboot.dao.UserDao;
+import com.example.springboot.entity.Account;
 import com.example.springboot.entity.User;
 import com.example.springboot.exception.CustomException;
 import jakarta.annotation.Resource;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServe {
+public class UserService {
 
     @Resource
     UserDao userDao;
@@ -50,5 +51,9 @@ public class UserServe {
         }
 
         return dbUser;
+    }
+
+    public User findById(Integer id) {
+        return userDao.findById(id);
     }
 }

@@ -8,5 +8,8 @@
     <select id="findByName" resultType="com.example.springboot.entity.Admin">
         select * from admin where `userName` = #{userName}
     </select>
+    <select id="findById" resultType="com.example.springboot.entity.Admin">
+        select * from admin where `id` = #{id}
+    </select>
 
 </mapper>

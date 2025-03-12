@@ -13,4 +13,6 @@ public interface UserDao {
     User findByName(@Param("userName") String userName);
 
     void insert(User user);
+
+    User findById(@Param("id") Integer id);
 }

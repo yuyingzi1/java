@@ -1,7 +1,7 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.entity.Merchants;
-import com.example.springboot.service.MerchantsServe;
+import com.example.springboot.service.MerchantsService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/merchants")
 public class MerchantsController {
     @Resource
-    MerchantsServe merchantsServe;
+    MerchantsService merchantsServe;
     @GetMapping("/alldata")
     public List<Merchants> list() {
         return merchantsServe.getAll();
