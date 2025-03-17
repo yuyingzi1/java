@@ -1,6 +1,7 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.common.Result;
+import com.example.springboot.entity.User;
 import com.example.springboot.service.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;

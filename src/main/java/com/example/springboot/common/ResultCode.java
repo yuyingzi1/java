@@ -12,8 +12,7 @@ public enum ResultCode {
     PARAM_PASSWORD_ERROR("2005", "原密码输入错误"),
     TOKEN_INVALID_ERROR("401", "无效的token"),
     TOKEN_CHECK_ERROR("401", "token验证失败，请重新登录"),
-    DATA_LESS("402", "管理员数据小于1"),
-    ;
+    USERNAME_ISNULL("402","用户名不能为空" );
 
     public String code;
     public String msg;

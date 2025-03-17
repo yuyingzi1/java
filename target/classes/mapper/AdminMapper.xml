@@ -12,4 +12,16 @@
         select * from admin where `id` = #{id}
     </select>
 
+    <insert id="insert" parameterType="com.example.springboot.entity.Admin">
+        INSERT INTO admin (userName, age, phone, gender)
+        VALUES (#{userName}, #{age}, #{phone}, #{gender})
+    </insert>
+    <delete id="deleteById" parameterType="com.example.springboot.entity.Admin">
+        DELETE FROM admin WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.example.springboot.entity.Admin">
+        UPDATE admin SET userName = #{userName},age = #{age},phone = #{phone},gender = #{gender}
+        WHERE id = #{id}  <!-- 必须包含主键条件 -->
+    </update>
 </mapper>

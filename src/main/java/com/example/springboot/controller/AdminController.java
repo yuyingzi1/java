@@ -23,5 +23,32 @@ public class AdminController {
 
     }
 
+    /**
+     *新增维修员接口
+     */
+    @PostMapping
+    public Result addRegister(@RequestBody Admin admin){
+        return Result.success(adminService.adminRegister(admin));
+    }
+
+    /**
+     * 删除维修员接口
+     */
+    @DeleteMapping("/{id}")
+    public Result deleteRegister(@PathVariable("id") Integer id){
+        adminService.deleteById(id);
+        return Result.success();
+    }
+
+    /**
+     * 修改维修员接口
+     */
+    @PutMapping("/update")
+    public Result adminUpdate(@RequestBody Admin admin){
+
+        return Result.success(adminService.adminUpdate(admin));
+
+    }
+
 
 }

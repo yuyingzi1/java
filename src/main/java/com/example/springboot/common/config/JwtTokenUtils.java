@@ -34,7 +34,6 @@ public class JwtTokenUtils {
     public void setUserService() {
         staticAdminService = adminService;
         staticUserService = userService;
-
     }
 
     /**

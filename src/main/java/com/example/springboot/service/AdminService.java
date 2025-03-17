@@ -42,4 +42,35 @@ public class AdminService {
     public Admin findById(Integer id) {
         return adminDao.findById(id);
     }
+
+    public Admin adminRegister(Admin admin) {
+
+        String userName = admin.getUserName();
+        // 1.判断用户名是否为空
+        if (ObjectUtil.isEmpty(userName)){
+            throw new CustomException(ResultCode.USERNAME_ISNULL);
+        }
+        // 2.拿到用户传来的用户名，先到数据库查看这个用户名是否存在,如果存在抛出异常：“用户名已存在”
+        Admin dbAdmin = adminDao.findByName(userName);
+        if (ObjectUtil.isNotEmpty(dbAdmin)){
+            throw new CustomException(ResultCode.USER_EXIST_ERROR);
+        }
+        adminDao.insert(admin);
+        return admin;
+    }
+
+    public void deleteById(Integer id) {
+        adminDao.deleteById(id);
+    }
+
+    public Admin adminUpdate(Admin admin) {
+        String userName = admin.getUserName();
+        // 1.判断用户名是否为空
+        if (ObjectUtil.isEmpty(userName)){
+            throw new CustomException(ResultCode.USERNAME_ISNULL);
+        }
+
+        adminDao.update(admin);
+        return admin;
+    }
 }

@@ -1,9 +1,7 @@
 package com.example.springboot.controller;
 
-
 import com.example.springboot.common.Result;
 import com.example.springboot.common.config.JwtTokenUtils;
-import com.example.springboot.dao.MerchantsDao;
 import com.example.springboot.entity.Account;
 import com.example.springboot.entity.Admin;
 import com.example.springboot.entity.User;
@@ -20,39 +18,37 @@ import java.util.Map;
 @RestController
 @RequestMapping("/account")
 public class AccountController {
-
     @Resource
     AdminService adminService;
 
     @Resource
     UserService userService;
 
-    @Resource
-    MerchantsDao merchantsDao;
+
 
     /**
      * 注册接口
      */
 
-
     @PostMapping("/register")
-    public Result accountRegister(@RequestBody Account account) {
+    public Result accountRegister(@RequestBody Account account){
         Integer role = account.getRole();
-        Account login = new Account();
-        //用户注册
-        if (role == 2) {
+        Account login = new Account(); // 定义一个Account类的login,用于返回给前端
+        if ( 2 == role){ //这里只有用户注册 如果有其他角色也需要注册，也是同样的逻辑
             User user = new User();
-            BeanUtils.copyProperties(account, user);
+            BeanUtils.copyProperties(account,user);
             login = userService.userRegister(user);
         }
         return Result.success(login);
     }
+
+
     /**
      * 用户登录接口
      */
 
     @PostMapping("/login")
-    public Result AcountLogin(@RequestBody Account account){
+    public Result accountLogin(@RequestBody Account account){
         Integer role = account.getRole();
         Account login = new Account(); // 定义一个Account类的login,用于返回给前端
         if ( 1 == role){
@@ -65,7 +61,6 @@ public class AccountController {
             BeanUtils.copyProperties(account,user);
             login = userService.userLogin(user);
         }
-
         //        生成token
         String token = JwtTokenUtils.genToken(login.getId() + "-" + login.getRole(), login.getPassword());
         //        创建一个键值对map集合，把token和user塞进去，返回给前端
