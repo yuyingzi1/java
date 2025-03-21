@@ -49,6 +49,15 @@ public class AdminController {
         return Result.success(adminService.adminUpdate(admin));
 
     }
+    /**
+     * 分页查询接口
+     */
+    @PostMapping("/page")
+    public Result page(@RequestBody Admin search,
+                       @RequestParam(defaultValue = "1") Integer pageNum,
+                       @RequestParam(defaultValue = "5") Integer pageSize){
+        return Result.success(adminService.page(search,pageNum,pageSize));
+    }
 
 
 }

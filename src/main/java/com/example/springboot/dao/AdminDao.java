@@ -20,4 +20,6 @@ public interface AdminDao {
     void deleteById(Integer id);
 
     void update(Admin admin);
+
+    List<Admin> findBySearch(Admin search);
 }

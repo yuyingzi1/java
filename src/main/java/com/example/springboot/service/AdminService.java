@@ -2,10 +2,13 @@ package com.example.springboot.service;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.example.springboot.common.ResultCode;
+import com.example.springboot.common.config.JwtTokenUtils;
 import com.example.springboot.dao.AdminDao;
 import com.example.springboot.entity.Account;
 import com.example.springboot.entity.Admin;
 import com.example.springboot.exception.CustomException;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -72,5 +75,23 @@ public class AdminService {
 
         adminDao.update(admin);
         return admin;
+    }
+
+    // 分页查询和模糊查询的方法
+    public PageInfo<Admin> page(Admin search, Integer pageNum, Integer pageSize) {
+        Account user = JwtTokenUtils.getCurrentUser();
+        if (ObjectUtil.isEmpty(user)) {
+            throw new CustomException(ResultCode.USER_NOT_LOGIN);
+        }
+        // 开启分页
+        PageHelper.startPage(pageNum, pageSize);
+        List<Admin> all = findByCondition(search);
+
+        return PageInfo.of(all);
+    }
+
+    // 根据条件查询的方法
+    public List<Admin> findByCondition(Admin search) {
+        return adminDao.findBySearch(search);
     }
 }
