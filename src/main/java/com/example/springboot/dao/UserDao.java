@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserDao {
     List<User> getAll();
 
-    User findByName(@Param("userName") String userName);
+    User findByName(@Param("phone") String phone);
 
     void insert(User user);
 

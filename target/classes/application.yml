@@ -17,3 +17,7 @@ mybatis:
   type-aliases-package: com.example.springboot.entity
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true

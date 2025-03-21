@@ -23,8 +23,8 @@ public class UserService {
 
     public User userRegister(User user) {
         // 拿用户输入的用户信息，去校验数据库中是否存在，存在则抛出异常
-        String dbUserName = user.getUserName();
-        User dbUser = userDao.findByName(dbUserName);
+        String dbUserPhone = user.getPhone();
+        User dbUser = userDao.findByName(dbUserPhone);
         // 如果存在，则将抛出异常提示用户已存在
         if (ObjectUtil.isNotEmpty(dbUser)) {
             throw new CustomException(ResultCode.USER_EXIST_ERROR);
@@ -37,7 +37,7 @@ public class UserService {
     }
 
     public User userLogin(User user) {
-        String dbUserName = user.getUserName();
+        String dbUserName = user.getPhone();
         User dbUser = userDao.findByName(dbUserName);
         if (ObjectUtil.isEmpty(dbUser)) {
             throw new CustomException(ResultCode.USER_NOT_EXIST_ERROR);

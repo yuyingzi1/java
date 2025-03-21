@@ -6,12 +6,12 @@
     </select>
 
     <select id="findByName" resultType="com.example.springboot.entity.User">
-        select * from `user` where userName = #{userName}
+        select * from `user` where phone = #{phone}
     </select>
 
     <insert id="insert" parameterType="com.example.springboot.entity.User">
-        INSERT INTO user (userName, password)
-        VALUES (#{userName}, #{password})
+        INSERT INTO user (phone, password)
+        VALUES (#{phone}, #{password})
     </insert>
 
     <select id="findById" resultType="com.example.springboot.entity.User">

@@ -1,17 +1,16 @@
 package com.example.springboot.dao;
 
 import com.example.springboot.entity.Admin;
-import com.example.springboot.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface AdminDao {
+public interface AdminDao  {
     List<Admin> getAll();
 
-    Admin findByName(@Param("userName") String userName);
+    Admin findByName(@Param("phone") String phone);
 
     Admin findById(@Param("id") Integer id);
 
@@ -21,5 +20,6 @@ public interface AdminDao {
 
     void update(Admin admin);
 
-    List<Admin> findBySearch(Admin search);
+    List<Admin> findBySearch(@Param("search") Admin search);
+
 }
