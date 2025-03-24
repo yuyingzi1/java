@@ -10,12 +10,28 @@
     </select>
 
     <insert id="insert" parameterType="com.example.springboot.entity.User">
-        INSERT INTO user (phone, password)
-        VALUES (#{phone}, #{password})
+        INSERT INTO user (userName, age, phone, gender, avatar,role,password)
+        VALUES (#{userName}, #{age}, #{phone}, #{gender}, #{avatar},#{role},#{password})
     </insert>
 
     <select id="findById" resultType="com.example.springboot.entity.User">
         select * from `user` where id = #{id}
     </select>
 
+    <delete id="deleteById" parameterType="com.example.springboot.entity.User">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.example.springboot.entity.User">
+        UPDATE user SET userName = #{userName},age = #{age},phone = #{phone},gender = #{gender},avatar = #{avatar}
+        WHERE id = #{id}  <!-- 必须包含主键条件 -->
+    </update>
+
+    <select id="findBySearch" resultType="com.example.springboot.entity.User">
+        select `user`.* from `user`
+        where 1 = 1
+        <if test="search != null and search.userName != null and search.userName != ''">
+            and `user`.`userName` like concat ('%', #{search.userName}, '%')
+        </if>
+    </select>
 </mapper>

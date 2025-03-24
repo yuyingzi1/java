@@ -38,6 +38,8 @@ public class AccountController {
             User user = new User();
             BeanUtils.copyProperties(account,user);
             login = userService.userRegister(user);
+        }else {
+            return Result.error("非用户不能注册");
         }
         return Result.success(login);
     }

@@ -59,5 +59,12 @@ public class AdminController {
         return Result.success(adminService.page(search,pageNum,pageSize));
     }
 
+    /**
+     * 启用禁用接口
+     */
+//    @PostMapping("/status/{status}")
+//    public Result statusOrStop(@PathVariable Integer status,Integer id){
+//        return Result.success(adminService.statusOrStop(status,id));
+//    }
 
 }

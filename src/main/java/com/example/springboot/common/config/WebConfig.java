@@ -17,6 +17,7 @@ public class WebConfig implements  WebMvcConfigurer {
         registry.addInterceptor(jwtInterceptor).addPathPatterns("/**")
                 .excludePathPatterns("/account/login") //注意登录接口要放行，因为登录不需要token，登录时生成token，登录后调用其他接口才需要token
                 .excludePathPatterns("/account/register") //放行注册接口，人人都可以注册用户
+                .excludePathPatterns("/files/**") //放行文件上传接口
         ;
     }
 }

@@ -15,4 +15,10 @@ public interface UserDao {
     void insert(User user);
 
     User findById(@Param("id") Integer id);
+
+    void deleteById(Integer id);
+
+    void update(User user);
+
+    List<User> findBySearch(@Param("search") User search);
 }

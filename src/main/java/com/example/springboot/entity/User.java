@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Table(name = "user")
+@Entity
 public class User extends Account {
     @Column(name = "email")
     private String email;

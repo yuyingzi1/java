@@ -68,6 +68,10 @@ public class AdminService {
             logger.error("用户名已存在，注册失败，用户名：{}", userName);
             throw new CustomException(ResultCode.USER_EXIST_ERROR);
         }
+        if (ObjectUtil.isEmpty(admin.getPassword())) {
+            // 如果密码为空，设置默认密码
+            admin.setPassword("123456");
+        }
         adminDao.insert(admin);
         return admin;
     }
@@ -109,4 +113,8 @@ public class AdminService {
         logger.info("根据条件查询管理员信息，条件：{}", search);
         return adminDao.findBySearch(search);
     }
+
+//    public void statusOrStop(Integer status, Integer id) {
+//
+//    }
 }
