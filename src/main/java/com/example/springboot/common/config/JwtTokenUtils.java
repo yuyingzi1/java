@@ -30,6 +30,10 @@ public class JwtTokenUtils {
     @Resource
     private UserService userService;
 
+    public static Account getCurrentNotice() {
+        return null;
+    }
+
     @PostConstruct
     public void setUserService() {
         staticAdminService = adminService;

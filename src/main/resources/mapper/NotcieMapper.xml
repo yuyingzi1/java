@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.dao.NoticeDao">
+    <select id="getAll" resultType="com.example.springboot.entity.Notice">
+        select `notice`.* from `notice`
+        <where>
+            <if test="title != null and title != ''">and title like concat('%',#{title},'%')</if>
+        </where>
+        order by id desc
+    </select>
+
+    <insert id="insert" parameterType="com.example.springboot.entity.Notice">
+        INSERT INTO notice (title, content, time)
+        VALUES (#{title}, #{content}, #{time})
+    </insert>
+
+
+    <delete id="deleteById" parameterType="com.example.springboot.entity.Notice">
+        DELETE FROM notice WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.example.springboot.entity.Notice">
+        UPDATE notice SET title = #{title},content = #{content},time = #{time}
+        WHERE id = #{id}  <!-- 必须包含主键条件 -->
+    </update>
+
+
+</mapper>
